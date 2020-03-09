@@ -1,6 +1,12 @@
 # key-listener
 
-requirements: pynput
+Requirements: Python3+
+
+Dependencies: pynput
+
+```bash
+pip install pynput
+```
 
 # How to run
 
